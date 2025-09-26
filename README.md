@@ -8,5 +8,5 @@
 | ------------- | --------------- | ---------------- |
 | Can Pekkan    | C4N-6           | the_pateto_man   |
 | Awab Eltigani | AwabEltigani    | remontadaaaa     |
-| Name          | GitHub username | discord username |
+| Calvin        | CalvinAHarr     | charriott03      |
 | Name          | GitHub username | discord username |
