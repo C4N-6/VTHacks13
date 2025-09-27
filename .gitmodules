@@ -1,3 +1,0 @@
-[submodule "piazza-api"]
-	path = src/piazza-api
-	url = https://github.com/hfaran/piazza-api.git
