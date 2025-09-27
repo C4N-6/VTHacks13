@@ -23,22 +23,32 @@ export default {
 
 <style>
 .quesion-box {
+    top: 50%;
     display: flex;
     max-width: 720px;
     align-items: center;
+    margin: 10px 50px 10px 10px;
 }
 .question {
     flex: 1;
-    width: 100%;
-    padding: 10px 110px 10px 12px; /* reserve space for button */
+    width: 500px;
+    height: 50px;
+    padding: 10px; /* reserve space for button */
     border-radius: 10px;
     box-sizing: border-box;
 }
 .send-btn {
+    height: 50px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     z-index: 2;
     cursor: pointer;
+}
+
+@media (max-width: 400px) {
+    .question {
+        top: 10%;
+    }
 }
 </style>

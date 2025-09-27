@@ -3,7 +3,7 @@ import QuestionBox from './components/QuestionBox.vue';
 </script>
 
 <template>
-  <QuestionBox></QuestionBox>
+  <QuestionBox/>
 </template>
 
 <style scoped>
