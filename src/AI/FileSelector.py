@@ -55,8 +55,9 @@ def getFilesForPrompt(
     return fileRanking
 
 
-prompt = "Get keywords out of a prompt using Python."
-answer = """ Well, a good keywords set is a good method. But, the key is how to build it. There are many way to do it.
+if __name__ == "__main__":
+    prompt = "Get keywords out of a prompt using Python."
+    answer = """ Well, a good keywords set is a good method. But, the key is how to build it. There are many way to do it.
 
 Firstly, the simplest one is searching open keywords set in the web. It's depend on your luck and your knowledge. Your keywords (likes "python, java, machine learing") are common tags in Stackoverflow, Recruitment websites. Don't break the law!
 
@@ -65,6 +66,6 @@ The second one is IR(Information Extraction), it's more complex than the last on
 Good lucky.
 
 For matching keywords/phases, Trie Tree is more faster. """
-keywords = extract_keywords(prompt)
-print(keywords)
-print(findNumberOfKeywordsInText(answer, keywords))
+    keywords = extract_keywords(prompt)
+    print(keywords)
+    print(findNumberOfKeywordsInText(answer, keywords))
