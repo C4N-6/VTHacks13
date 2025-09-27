@@ -2,6 +2,30 @@
 <script>
 export default {
     data() { return { text: '' } },
+    mounted() {
+        this._onSlash = (e) => {
+            // ignore if modifier keys are pressed
+            if (e.ctrlKey || e.metaKey || e.altKey) return
+            // only respond to the plain slash key
+            if (e.key !== '/') return
+            //ignore if user is already typing in a field
+            const tg = e.target
+            if(tg && (tg.tagName == 'INPUT' || tg.tagName === 'TEXTAREA' || tg.isContentEditable)) return
+
+            e.preventDefault()
+            const el = this.$refs.inputRef
+            if (el && typeof el.focus === 'function') {
+                el.focus()
+                //put cursor at end
+                const len = el.value?.length || 0
+                if (el.setSelectionRange) el.setSelectionRange(len, len)
+            }
+        }
+        window.addEventListener('keydown', this._onSlash)
+    },
+    beforeUnmount() {
+        window.removeEventListener('keydown', this._onSlash)
+    },
     methods: {
         send() {
             console.log('send:', this.text);
@@ -14,6 +38,7 @@ export default {
 <template>
     <div class="question-box">
         <input 
+            ref="inputRef"
             class="question" 
             placeholder="Ask a question"
             @keyup.enter="send"/>
@@ -48,7 +73,7 @@ export default {
 
 @media (max-width: 400px) {
     .question {
-        top: 10%;
+        top: 10px;
     }
 }
 </style>

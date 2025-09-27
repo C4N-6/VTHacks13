@@ -5,7 +5,7 @@ import QuestionBox from './components/QuestionBox.vue';
 <template>
   <QuestionBox/>
 </template>
-
+ 
 <style scoped>
 .logo {
   height: 6em;
