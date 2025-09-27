@@ -51,10 +51,6 @@ def get_latest_question(user_email, user_password, user_course_id):
                 answer_content = clean_html(child["history"][0]["content"])
                 answers.append(answer_content)
 
-                
-        
-        
-        
         all_posts.append({
             "question_id": post["id"],
             "question": question_text,
@@ -62,6 +58,13 @@ def get_latest_question(user_email, user_password, user_course_id):
         })
     
     return all_posts
+
+
+def getURL(filename):
+    if str(filename).count(".") > 1:
+        return "hidden files dont work"
+    name_without_extension = filename.rsplit(".", 1)[0]
+    return f"https://piazza.com/class/m63z5y05jgj3f6/post/{name_without_extension}"
     
 
 
