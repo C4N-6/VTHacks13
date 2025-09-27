@@ -1,9 +1,23 @@
-<script setup>
-import QuestionBox from './components/QuestionBox.vue';
+<script>
+import QuestionTextBox from './components/QuestionTextBox.vue';
+import Answer from './components/Answer.vue';
+
+export default {
+  components: { QuestionTextBox, Answer },
+  data() {
+    return { headerText: ''}
+  },
+  methods: {
+    handleQuestion(payload) {
+      this.headerText = payload
+    }
+  }
+}
 </script>
 
 <template>
-  <QuestionBox/>
+  <QuestionTextBox @submit="handleQuestion" />
+  <Answer :title="headerText" />
 </template>
  
 <style scoped>

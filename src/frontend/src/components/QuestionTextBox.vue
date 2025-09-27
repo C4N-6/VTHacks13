@@ -29,6 +29,10 @@ export default {
     methods: {
         send() {
             console.log('send:', this.text);
+            const s = this.text.trim()
+            if (!s) return
+            // emit the text to the parent
+            this.$emit('submit', s)
             this.text = '';
         }
     }
@@ -73,7 +77,9 @@ export default {
 
 @media (max-width: 400px) {
     .question {
+        width: 100%;
         top: 10px;
+        right: 10px;
     }
 }
 </style>
