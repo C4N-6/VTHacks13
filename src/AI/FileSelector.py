@@ -1,4 +1,5 @@
 import os
+from sys import argv
 from typing import List, Tuple
 from nltk import download
 from nltk.corpus import stopwords
@@ -9,7 +10,7 @@ download("punkt_tab", quiet=True)
 
 
 def findFiles(directory: str) -> List[str]:
-    return os.listdir("path/to/directory")
+    return os.listdir(directory)
 
 
 def extract_keywords(text: str) -> List[str]:
@@ -28,7 +29,6 @@ def findNumberOfKeywordsInText(text: str, keywords: List[str]) -> int:
     for word in text.split():
         for keyword in keywords:
             if word == keyword:
-                print(word)
                 num += 1
                 continue
 
@@ -43,29 +43,24 @@ def getFilesForPrompt(
     keywords = extract_keywords(prompt)
 
     for file in files:
-        with open(file, "r") as f:
+        with open(directory + "/" + file, "r") as f:
             text = f.read()
         fileRanking.append((file, findNumberOfKeywordsInText(text, keywords)))
 
-    fileRanking.sort(key=lambda x: x[1])
+    fileRanking.sort(key=lambda x: x[1], reverse=True)
 
+    fileRanking = [x for x in fileRanking if x[1] != 0]
     if fileRanking.__sizeof__() > numberOfFiles:
-        fileRanking = fileRanking[:10]
+        fileRanking = fileRanking[:numberOfFiles]
 
     return fileRanking
 
 
 if __name__ == "__main__":
     prompt = "Get keywords out of a prompt using Python."
-    answer = """ Well, a good keywords set is a good method. But, the key is how to build it. There are many way to do it.
 
-Firstly, the simplest one is searching open keywords set in the web. It's depend on your luck and your knowledge. Your keywords (likes "python, java, machine learing") are common tags in Stackoverflow, Recruitment websites. Don't break the law!
-
-The second one is IR(Information Extraction), it's more complex than the last one. There are many algorithms, likes "TextRank", "Entropy", "Apriori", "HMM", "Tf-IDF", "Conditional Random Fields", and so on.
-
-Good lucky.
-
-For matching keywords/phases, Trie Tree is more faster. """
-    keywords = extract_keywords(prompt)
-    print(keywords)
-    print(findNumberOfKeywordsInText(answer, keywords))
+    print(
+        getFilesForPrompt(
+            "/Users/patetoman/Documents/Git/VTHacks13/questions-2114", prompt, 370
+        )
+    )
