@@ -1,5 +1,4 @@
 import os
-from sys import argv
 from typing import List, Tuple
 from nltk import download
 from nltk.corpus import stopwords
@@ -61,6 +60,6 @@ if __name__ == "__main__":
 
     print(
         getFilesForPrompt(
-            "/Users/patetoman/Documents/Git/VTHacks13/questions-2114", prompt, 370
+            "/Users/patetoman/Documents/Git/VTHacks13/questions-2114", prompt, 5
         )
     )
